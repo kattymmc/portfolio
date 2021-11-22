@@ -1,9 +1,9 @@
 :root {
-  --branding-color: #f5abab;
+  --branding-color: #f95959;
   --secondary-color: #f2f2f2;
-  --text-color: #132743;
-  --heading-font-family: "Playfair Display", serif;
-  --default-font-family: "Poppins", sans-serif;
+  --text-color: black;
+  --heading-font-family: "Handlee", cursive;
+  --default-font-family: "Nunito", sans-serif;
 }
 
 body {
@@ -41,7 +41,7 @@ nav ul {
 nav li {
   display: inline;
   list-style: none;
-  line-height: 42px;
+  line-height: 30px;
   margin-left: 15px;
 }
 
@@ -56,12 +56,18 @@ nav li.active a {
   color: var(--branding-color);
 }
 
+nav .logo-link {
+  line-height: 30px;
+  font-size: 20px;
+}
+
 .project-description h2 {
   font-size: 64px;
 }
 
 p {
-  color: var(--text-color) !important;
+  color: var(--text-color);
+
   font-weight: normal;
   font-size: 16px;
   line-height: 30px;
@@ -94,12 +100,19 @@ p {
   font-family: var(--default-font-family);
 }
 
+.container-nav {
+  box-shadow: 0px 5px 10px rgb(0 0 0 / 30%);
+}
+
 .content {
   margin: 30px;
 }
 
 .hero {
-  background-color: var(--secondary-color);
+  background-image: url(../images/datascience-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: center;
   text-align: center;
   padding: 120px 20px;
 }
@@ -108,6 +121,7 @@ p {
   font-size: 36px;
   font-weight: bold;
   margin: 0;
+  color: white;
 }
 
 .hero h2 {
@@ -115,6 +129,11 @@ p {
   font-weight: normal;
   line-height: 1.5;
   font-size: 24px;
+}
+
+.hero h2,
+.hero h1 {
+  color: white;
 }
 
 .btn-branding {
@@ -126,10 +145,20 @@ p {
   padding: 15px 30px;
 }
 
-.btn-branding:hover {
+.btn-branding-min {
+  background: var(--branding-color);
+  border-radius: 4px;
+  color: white;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 10px 20px;
+}
+
+.btn-branding:hover,
+.btn-branding-min:hover {
   color: var(--branding-color);
   border: 1px solid var(--branding-color);
-  background: var(--secondary-color);
+  background: white;
 }
 
 .btn-branding-outline {
@@ -154,9 +183,83 @@ p {
   padding: 60px 60px;
 }
 
+.img-container {
+  padding: 20px;
+  background-color: var(--secondary-color);
+  transition: all 300ms ease-in-out;
+}
+
+.img-container:hover {
+  background-color: var(--branding-color);
+}
+
+.img-container img {
+  margin: 0 auto;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.work-container {
+  margin: 0 auto;
+  max-width: 1400px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.work-container .project-container {
+  position: relative;
+  width: 450px;
+  height: 350px;
+  margin: 20px;
+  overflow: hidden;
+}
+.work-container .project-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.work-container .project-info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f2f2f2;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: right;
+  transition-delay: 0.5s;
+}
+.work-container .project-container:hover .project-info::before {
+  transform: scaleX(1);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+  transition-delay: 0s;
+}
+.work-container .content-info {
+  position: relative;
+  padding: 20px 35px;
+  transition: 0.5s;
+  transform: translateX(-420px);
+  transition-delay: 0.5s;
+  z-index: 100;
+}
+.work-container .project-container:hover .project-info .content-info {
+  transform: translateX(0px);
+}
+
 .profile-pic {
+  background-color: var(--branding-color);
   border-radius: 50%;
-  border: 10px solid white;
 }
 
 footer {
@@ -205,7 +308,11 @@ footer .social-links a:hover {
     line-height: 56px;
   }
 
-  h2 {
+  .content h1 {
+    font-size: 50px;
+  }
+  h2,
+  .project-description h2 {
     font-size: 44px;
   }
 
@@ -214,6 +321,14 @@ footer .social-links a:hover {
   }
   nav a {
     font-size: 12px;
+  }
+
+  nav .logo-link {
+    font-size: 15px;
+  }
+
+  nav {
+    padding: 10px 0;
   }
 
   .content-container {
@@ -242,5 +357,14 @@ footer .social-links a:hover {
     font-size: 12px;
     line-height: 20px;
     padding: 10px 15px;
+  }
+
+  .work-container .project-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  .work-container .content-info {
+    transform: translateX(-300px);
   }
 }
